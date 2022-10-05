@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   
-  before_action :set_listing, only: %i[show destroy]
+  before_action :set_listing, only: %i[show destroy collect_reviews]
   
   def index
     @listings = current_user.listings
@@ -29,6 +29,30 @@ class ListingsController < ApplicationController
     end
 
     redirect_to root_path, notice: t(:destroyed)
+  end
+
+  def collect_reviews
+    @reviews = @listing.reviews.select('COUNT(*) AS count, date').group(:date).order(:date)
+    first_date = @reviews.first.date
+    current_date = Date.current
+    all_months = []
+    
+    loop do
+      first_date = first_date + 1.month
+      break if first_date > current_date
+      all_months << first_date
+    end
+
+    result = all_months.map do |month|
+      month = {
+        date: month.strftime("%B %Y"),
+        count: @reviews.find_by_date(month)&.count || 0
+      }
+    end
+
+    labels = result.pluck(:date)
+    values = result.pluck(:count)
+    render json: { labels: labels, values: values }, status: :ok
   end
 
   private

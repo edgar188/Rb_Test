@@ -30,6 +30,16 @@ gem 'devise', '~> 4.8'
 # Translations for the devise gem
 gem 'devise-i18n'
 
+# Kimurai is a modern web scraping framework written in Ruby.
+gem 'kimurai'
+gem 'chromedriver-helper'
+gem 'selenium-webdriver', '< 4'
+
+# Simple, efficient background processing for Ruby
+gem 'sidekiq'
+# Light weight job scheduling extension for Sidekiq that adds support for queueing jobs in a recurring way
+gem 'sidekiq-scheduler', '~> 3.0', '>= 3.0.1'
+
 # Haml-rails provides Haml generators for Rails 5. It also enables Haml as the templating engine 
 gem "haml-rails", "~> 2.0"
 

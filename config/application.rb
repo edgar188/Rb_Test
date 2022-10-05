@@ -14,6 +14,7 @@ require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require 'kimurai'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -34,5 +35,10 @@ module RBTest
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    Kimurai.configure do |config|
+      config.selenium_chrome_path = "/usr/bin/chromium-browser"
+      config.chromedriver_path = "/usr/bin/chromedriver"
+    end
   end
 end

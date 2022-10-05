@@ -1,2 +1,8 @@
 = button_to 'Delete', listing_path(@listing), class: 'btn btn-danger mb-2', method: :delete
-%p= @listing.url
+
+.wrapper.mt-5
+  %canvas#myChart
+  %input{ name: 'listing_id', type: 'hidden', value: @listing.id, id: 'listing_id' }
+
+= javascript_include_tag 'helpers/axios_handler'
+= javascript_include_tag 'listings/index'

@@ -1,0 +1,10 @@
+:concurrency: <%= ENV.fetch("SIDEKIQ_CONCURRENCY") { 5 } %>
+
+:queues:
+  - default
+  - update_reviews
+
+update_reviews_job:
+  cron: '0 0 * * *' # Works every day in the first hour and first minute
+  class: Scheduled::UpdateReviewsJob
+  description: 'The job is to collect reviews from airbnb and update the database.'
