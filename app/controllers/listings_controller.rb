@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   
-  before_action :set_listing, only: %i[show destroy collect_reviews]
+  before_action :set_listing, only: %i[show destroy collected_reviews]
   
   def index
     @listings = current_user.listings
@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
     redirect_to root_path, notice: t(:destroyed)
   end
 
-  def collect_reviews
+  def collected_reviews
     @reviews = @listing.reviews.select('COUNT(*) AS count, date').group(:date).order(:date)
     first_date = @reviews.first.date
     current_date = Date.current

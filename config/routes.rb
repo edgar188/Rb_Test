@@ -19,8 +19,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :listings, except: [:edit, :update] do
+    resources :reviews, only: [] do 
+      collection do
+        get :collected_texts
+      end
+    end
+    
     member do
-      get :collect_reviews
+      get :collected_reviews
     end
   end
 

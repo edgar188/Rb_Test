@@ -1,12 +1,13 @@
 listing_id = document.getElementById('listing_id')
 
-axiosGET(`${listing_id.value}/collect_reviews`)
+axiosGET(`${listing_id.value}/collected_reviews`)
   .then((res) => res['data'])
   .then((res) => {
     return render_reviews_chart(res)
   })
-  .catch((error) => alert(error.message));
+  .catch((error) => console.log(error.message));
 
+  
 let render_reviews_chart = reviews => {
   const labels = reviews['labels']
   const values = reviews['values']

@@ -3,6 +3,13 @@
 .wrapper.mt-5
   %canvas#myChart
   %input{ name: 'listing_id', type: 'hidden', value: @listing.id, id: 'listing_id' }
+%hr
+%h2.text-center.text-primary Word Cloud
+%hr
+#container
+  #cloud
 
+  
 = javascript_include_tag 'helpers/axios_handler'
 = javascript_include_tag 'listings/index'
+= javascript_include_tag 'listings/word_cloud'
