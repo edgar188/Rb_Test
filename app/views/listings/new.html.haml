@@ -1,0 +1,9 @@
+%h4.mb-2 New Listing
+= form_with model: @listing do |f|
+  = render partial: 'shared/error_messages', resource: @listing
+  .form-group.row.mb-2.mt-4
+    .col-sm-10
+      = f.text_field :url, autofocus: true, autocomplete: 'url', class: 'form-control', placeholder: 'Url'
+  %br
+  .actions
+    = f.submit 'Create', class: 'btn btn-primary mb-2'

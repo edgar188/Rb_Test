@@ -38,6 +38,9 @@ gem 'devise-bootstrap-views', '~> 1.0'
 # The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.
 gem 'bootstrap', '~> 5.1'
 
+# AutoStripAttributes helps to remove unnecessary whitespaces from ActiveRecord or ActiveModel attributes.
+gem "auto_strip_attributes", "~> 2.6"
+
 # Used to load environment variables from .env into ENV
 gem 'dotenv-rails'
 

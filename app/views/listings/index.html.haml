@@ -1,0 +1,11 @@
+.mt-4= link_to 'New listing', new_listing_path, class: 'btn btn-primary btn-sm'
+%table#items_table.table.table-striped.ml-8
+  %thead.align-baseline.align-top
+    %tr
+      %th Listings
+  %tbody#items_table_body
+    - @listings.each do |listing|
+      %tr.link.text-break
+        %td
+          %a{href: "/listings/#{listing.id}"}
+            = listing.url
