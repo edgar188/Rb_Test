@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("POOL_THREADS") { 5 } %>
+  host: <%= ENV.fetch("HOST") { "localhost" } %>
+  database: <%= ENV["DB_NAME"] %>
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+
+production:
+  <<: *default
+
+development:
+  <<: *default
+
+staging:
+  <<: *default
+
+
