@@ -1,0 +1,22 @@
+%nav.navbar.navbar-expand-md.bg-light.p-2
+  .container-fluid
+    %button.navbar-toggler{'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation', 'data-bs-target': '#navbarSupportedContent', 'data-bs-toggle': 'collapse', type: 'button'}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      -# %ul.navbar-nav.me-auto
+      -#   %li.nav-item
+      -#     = link_to 'Home', root_path, class: 'nav-link active'
+      .navbar-collapse
+        %ul.navbar-nav.ms-auto
+          - if user_signed_in?
+            %li.nav-item.dropdown.align-baseline.align-right.p-2
+              = current_user.email
+            %li.nav-item.dropdown.align-baseline.align-right
+              = button_to destroy_user_session_path, class: 'btn btn-secondary', method: :delete do
+                Log out
+          - else
+            = link_to new_user_session_path, class: 'btn btn-primary mr-1' do
+              Sign in
+            %hr.dropdown-divider/
+            = link_to new_user_registration_path, class: 'btn btn-secondary' do
+              Sign up

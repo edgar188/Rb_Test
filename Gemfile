@@ -30,6 +30,14 @@ gem 'devise', '~> 4.8'
 # Translations for the devise gem
 gem 'devise-i18n'
 
+# Haml-rails provides Haml generators for Rails 5. It also enables Haml as the templating engine 
+gem "haml-rails", "~> 2.0"
+
+# Make sure Bootstrap is installed, either as a Ruby gem or using CDN
+gem 'devise-bootstrap-views', '~> 1.0'
+# The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.
+gem 'bootstrap', '~> 5.1'
+
 # Used to load environment variables from .env into ENV
 gem 'dotenv-rails'
 
