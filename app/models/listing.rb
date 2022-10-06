@@ -6,15 +6,14 @@ class Listing < ApplicationRecord
   # Removing accidental spaces from attributes
   auto_strip_attributes :url, squish: true
 
-  validates :url, presence: true, length: { maximum: 1024 }, format: %r{\Ahttp(s)://.*?\.airbnb\.com/rooms}
+  validates :url, presence: true, uniqueness: true, format: %r{\Ahttp(s)://.*?\.airbnb\.com/rooms}
 
-  after_commit :create_reviews, on: :create
+  after_create :create_reviews
 
   private
 
   def create_reviews
-    response = Scraping::Airbnb.call([self.url])
-    self.reviews = response[:reviews]
+    CreateListingReviewsJob.perform_later(self)
   end
 
 end

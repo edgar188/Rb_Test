@@ -6,8 +6,7 @@ class Review < ApplicationRecord
   auto_strip_attributes :reviewer_name, :text, squish: true
 
   validates :reviewer_name, presence: true, length: { maximum: 255 }
-  validates :text, presence: true, length: { maximum: 1024 }
+  validates :text, presence: true
   validates_presence_of :external_id, :date
-  validates_uniqueness_of :external_id, scope: :listing
 
 end

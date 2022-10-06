@@ -3,6 +3,7 @@
 :queues:
   - default
   - update_reviews
+  - create_listing_reviews
 
 update_reviews_job:
   cron: '0 0 * * *' # Works every day in the first hour and first minute

@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
     @listing = current_user.listings.new(listing_params)
 
     if @listing.save
-      redirect_to @listing, notice: t(:created)
+      redirect_to root_path, notice: t(:created)
     else
       flash[:msg] = { message: @listing.errors.full_messages }
       render :new, status: :bad_request

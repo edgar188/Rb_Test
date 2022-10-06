@@ -3,7 +3,7 @@ listing_id = document.getElementById('listing_id')
 axiosGET(`${listing_id.value}/reviews/collected_texts`)
 .then((res) => res['data'])  
 .then((res) => {
-    return draw(res, 50)
+    return draw(res, 30)
   })
   .catch((error) => console.log(error.message));
 
